@@ -26,8 +26,8 @@ object SampleScript {
 
 To use an established Quandl API access token, you need to have a file on your classpath that looks something like the following (this project uses TypeSafe configuration):
 
-'''json
+```
 quandl {
     accesstoken="XXXXXXXXXXXX"
 }
-'''
+```
