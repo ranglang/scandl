@@ -1,13 +1,15 @@
 package com.scandl.language
 
-import com.scandl.language.LanguageImplicits._
+import com.scandl.language.Syntax._
 
 object SampleScript {
 	def main(args:Array[String]):Unit = {
+	  
 	  val GOOG_PE = 'PE_CURR of 'GOOG
-	  display(GOOG_PE)
+	  plot(GOOG_PE,"Google PE")
 	  
 	  val assortedStocks = 'PE_CURR of 'GOOG|'AAPL|'TWTR
-	  display(assortedStocks)
+	  plot(assortedStocks, "Popular Tech Stock PE")
+	
 	}
 }

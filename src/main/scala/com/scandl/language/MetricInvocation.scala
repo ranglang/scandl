@@ -7,12 +7,7 @@ class MetricInvocation(name:String) {
 	 new DataAccessRequest(symbol.stock, this.metric)
   }
   
-  def of(symbol:Symbol): DeferredValueExpression = {
-    this.of(new StockInvocation(symbol.name))
+  def of(symbols:Seq[StockInvocation]): DeferredValueExpression = {
+    new MultiDataAccessRequest(symbols.map {a => a.stock}, Array[Metric](this.metric))
   }
-  
-  def of(symbols:StockList): DeferredValueExpression = {
-    new MultiDataAccessRequest(symbols.toArray map {_.stock}, Array[Metric](this.metric))
-  }
-
 }

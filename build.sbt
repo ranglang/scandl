@@ -17,7 +17,8 @@ libraryDependencies ++= Seq(
  "org.scalaj" %% "scalaj-http" % "0.3.14",
  "org.scalanlp" % "breeze_2.10" % "0.7",
  "org.scalanlp" % "breeze-natives_2.10" % "0.7",
- "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0"
+ "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0",
+ "org.scalaz" %% "scalaz-core" % "7.0.6"
 )
 
 //scalacOptions in Test ++= Seq("-Yrangepos")
