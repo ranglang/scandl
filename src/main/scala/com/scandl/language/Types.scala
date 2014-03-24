@@ -11,6 +11,6 @@ trait DeferredValueExpression {
 
 trait DeferredValue {
   def dataSeries():Map[String, Array[(Int, Double)]]
+  def values(position:Int=0):DenseVector[Double]
+  def dates(position:Int = 0):DenseVector[Int]
 }
-
-

@@ -9,6 +9,14 @@ class TimeSeries(val name:String, dates:DenseVector[Int] = DenseVector(), values
   
   def withDatesAndValues(dates:DenseVector[Int], values:DenseVector[Double]) = new TimeSeries(name, dates, values)
   def withDatesAndValues(dates:Array[Int], values:Array[Double]) = new TimeSeries(name, new DenseVector(dates), new DenseVector(values))
+
+  
+  
+  override
+  def values(position:Int = 0):DenseVector[Double] = values
+  
+  override
+  def dates(position:Int = 0):DenseVector[Int] = dates
   
   override
   def dataSeries():Map[String, Array[(Int, Double)]] = {
@@ -22,6 +30,12 @@ class TimeSeries(val name:String, dates:DenseVector[Int] = DenseVector(), values
 }
 
 class TimeSeriesCollection(timeSeries:Array[TimeSeries]) extends DeferredValue {
+  
+  override
+  def values(position:Int = 0):DenseVector[Double] = timeSeries(position).values()
+  
+  override
+  def dates(position:Int = 0):DenseVector[Int] = timeSeries(position).dates()
   
   override
   def dataSeries():Map[String, Array[(Int, Double)]] = {

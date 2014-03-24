@@ -7,13 +7,13 @@ trait StockServiceComponent {
 	this:ApiAccessComponent =>
 	val stockService: StockService
 	
-	class StockService {
+	class StockService (val metrics:Map[String,Attribute]) {
 		def getMetric(symbols:List[String], metric:String) = {
-		  symbols map {symbol => (symbol, Map(metric -> apiAccess.lookup(symbol, metric)))} toMap
+		  symbols map {symbol => (symbol, Map(metric -> apiAccess.lookup(metrics.get(metric).get.getCode(symbol))))} toMap
 		}
 		
-		def getMetrics(symbols:List[String], metrics:List[String]) = {
-		  symbols map {s => (s, metrics map {m => (m, apiAccess.lookup(s,m))} toMap )} toMap
+		def getMetrics(symbols:List[String], allMetrics:List[String]) = {
+		  symbols map {s => (s, allMetrics map {m => (m, apiAccess.lookup(metrics.get(m).get.getCode(s)))} toMap )} toMap
 		}
 		
 		def resolve(request:DataAccessRequest) = {
